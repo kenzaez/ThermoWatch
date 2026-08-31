@@ -1,0 +1,26 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local project artefacts / data
+models/
+plots/
+data/raw/
+data/processed/
+
+# Model and dataset files
+*.keras
+*.npy
+*.csv
