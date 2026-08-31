@@ -10,9 +10,12 @@
 from typing import Optional
 from fastapi import FastAPI, HTTPException
 
-import data_source
-import model_service
-import anomaly_logic
+try:
+    from api import data_source, model_service, anomaly_logic
+except ModuleNotFoundError:
+    import data_source
+    import model_service
+    import anomaly_logic
 
 app = FastAPI(title="anomaly detection api", description="api de detection d anomalie pour capteur IoT (REF/CONG/ETUVE)")
 

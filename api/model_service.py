@@ -6,12 +6,15 @@
 
 import json
 import os
+from pathlib import Path
+
 import numpy as np
 from tensorflow import keras
 
-MODEL_FOLDER = "../models"
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_FOLDER = BASE_DIR / "models"
 TYPES = ["ETUVE", "REF", "CONG"]
-CACHE_PATH = f"{MODEL_FOLDER}/device_thresholds.json"
+CACHE_PATH = MODEL_FOLDER / "device_thresholds.json"
 
 # variable globale, rempli une seule fois au demarrage de l api
 _models = {}
@@ -26,7 +29,7 @@ def load_models_and_thresholds():
 
     print("chargement des model lstm")
     for device_type in TYPES:
-        _models[device_type] = keras.models.load_model(f"{MODEL_FOLDER}/lstm_{device_type}.keras")
+        _models[device_type] = keras.models.load_model(str(MODEL_FOLDER / f"lstm_{device_type}.keras"))
         print(f"model {device_type} charge")
 
     if not os.path.exists(CACHE_PATH):

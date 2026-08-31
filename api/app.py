@@ -11,6 +11,8 @@
 #   1) demarrer l'API      : uvicorn api.main:app --reload
 #   2) demarrer le dashboard: python -m streamlit run app.py
 
+import os
+
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
@@ -20,7 +22,7 @@ import requests
 # Configuration generale
 # ----------------------------------------------------------------------------
 
-API_BASE_URL = "http://127.0.0.1:8000"
+API_BASE_URL = os.environ.get("API_BASE_URL", "http://127.0.0.1:8000")
 REQUEST_TIMEOUT = 260  # secondes
 
 st.set_page_config(

@@ -6,11 +6,13 @@
 # sera le seul a changer, le reste de l app ne bouge pas
 
 import random
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-CSV_PATH = "../data/processed/all_data_with_all_anomalies.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+CSV_PATH = BASE_DIR / "data" / "processed" / "all_data_with_all_anomalies.csv"
 
 # variable globale qui garde le csv charge en memoire
 # charge une seule fois au demarrage de l api, pas a chaque requete
